@@ -1,0 +1,59 @@
+﻿@model ML.Empleado
+@{
+    ViewData["Title"] = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Form</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Form", "Empleado", FormMethod.Post, new { enctype = "multipart/form-data"}))
+            {
+                <div class="form-horizontal">
+
+                    <div class="col-md-3" style="display:none">
+                        @Html.LabelFor(model => model.IdEmpleado)
+                        @Html.TextBoxFor(model => model.IdEmpleado, new { @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.Nombre)
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.ApellidoPaterno)
+                        @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.ApellidoMaterno)
+                        @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.Email)
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.Telefono)
+                        @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control" })
+                    </div>
+
+
+                    <div class="col-md-3">
+                        <input type="submit" value="Guardar" class="btn btn-success" />
+                        @Html.ActionLink("Regresar","GetAll","Empleado",htmlAttributes:new {@class="btn btn-danger"} )
+                    </div>
+                </div>
+
+
+
+            }
+        </div>
+    </div>
+</div>
+

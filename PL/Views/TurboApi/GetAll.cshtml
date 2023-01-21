@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>GetAll</h1>
+
+    <input type="submit" value="Agregar" class="btn btn-success" onclick="Mostrar()" />
+	<table id="tabla" border=2>
+		<thead>
+			<tr>
+				<td>Nombre</td>
+				<td>Correo</td>
+				<td>Sexo</td>
+				<td>Direccion</td>
+				<td>Imagen</td>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+
+
+    <div id="news"> </div>
+
+@section Scripts{
+
+    @*<script src="https://code.jquery.com/jquery-3.5.1.js"></script>*@
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script> 
+
+    <script>
+
+
+
+
+        function Mostrar() {
+            $.ajax({
+                url: "https://randomuser.me/api/"
+            }).then(function (data) {
+                for (i = 0; i < data.results.length; i++) {
+                    $('#tabla').append("<tr>" +
+                                        "<td>" + data.results[i].name.first + "</td>" +
+                                        "<td>" + data.results[i].email + "</td>" +
+                                        "<td>" + data.results[i].name.title + "</td>" +
+                                        "<td>" + data.results[i].location.street.name + "</td>" +
+                                        "<td>" + "<img src='"+data.results[i].picture.medium+"' />" + "</td>" +
+                                        //"<td>" + data.results[i].picture.medium + "</td>" +
+                                      "</tr>");
+                    }
+                });
+        }
+
+
+    </script>
+}
